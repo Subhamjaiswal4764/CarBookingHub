@@ -1,0 +1,13 @@
+<template>
+    <lightning-card label="Car Tile List " icon-name="standard:contact" class="slds-m-around_medium">
+        <div class="mainConatiner">
+            <div class="content">
+                <template for:each={cars} for:item="car">
+                    <c-car-list key={car.Id} cars={car}></c-car-list>
+                   
+                </template>
+                
+            </div>
+        </div>
+    </lightning-card>
+</template>
