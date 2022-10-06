@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="carfilter" icon-name="standard:account">
+        <div class="slds-m-horizontal_medium">
+            <lightning-input label="search key" type="search" onkeyup={handleInputChange} value={filters.searchKey}></lightning-input>
+            <section>
+                <lightning-slider label="Price Range"  step="100" min="0" max="99999" value={filters.maxPrice} onchange={sliderChange}></lightning-slider>
+            </section>
+            <section>
+                <h2>Make</h2>
+                <template if:true={carM}>
+                    <template for:each={carM.values} for:item="make">
+                        <lightning-input 
+                        key={make.value}
+                        type="checkbox" 
+                        data-name={make.label}
+                        data-value={make.value}
+                        label={make.label}
+                        onchange={handleCarMakeRadio}
+                        checked></lightning-input>
+                    </template>
+                </template>
+            </section>
+            <section>
+                <h2>Category</h2>
+                <template if:true={carC}>
+                    <template for:each={carC.values} for:item="category">
+                        <lightning-input 
+                        key={category.value}
+                        type="checkbox" 
+                        data-name={category.label}
+                        data-value={category.value}
+                        label={category.label}
+                        onchange={handleCarMakeRadio}
+                        checked></lightning-input>
+                    </template>
+                </template>
+            </section>
+         111
+        </div>
+    </lightning-card>
+</template>

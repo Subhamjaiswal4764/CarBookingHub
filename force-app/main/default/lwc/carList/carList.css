@@ -1,0 +1,19 @@
+img.carImage{
+    height: 120px;
+    max-width: initial;
+    pointer-events: none;
+}
+
+.title{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+.imageContainer{
+    padding: 8px;
+    background-color: #ffff ;
+    border-radius: 5px;
+}
