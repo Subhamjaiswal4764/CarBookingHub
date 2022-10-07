@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="accordian basics" >
+        <lightning-accordion active-section-name="B">
+            <lightning-accordion-section name="A" label='A' onsectiontoggle={handleSectionToggle} >
+               <p class="ab"  >This is A</p>
+               <button name="click"  onclick={handleClick}>Click me</button>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="B" label='B' onsectiontoggle={handleSectionToggle}>
+                <p>This is A</p>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="c" label='c' onsectiontoggle={handleSectionToggle}>
+                <p>This is A</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+44
+    </lightning-card>
+</template>

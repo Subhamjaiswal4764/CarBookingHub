@@ -5,8 +5,8 @@
                 <img src={cars.Picture_URL__c} alt="Car Image" class="slds-align_absolute-center carImage">
             </div>
             <div>
-               <p class="slds-align_absolute-center title">{cars.Make__c}</p>
-               <p class="slds-align_absolute-center title">MSRP:</p> 
+                <p class="slds-align_absolute-center title">{cars.Make__c}</p>
+                <p class="slds-align_absolute-center title">MSRP:</p> 
                <lightning-formatted-number format-style="currency" class="slds-align_absolute-center" currency-code="USD" minimum-fraction-digits="0" value={cars.MSRP__c}></lightning-formatted-number>
                 
             </div>

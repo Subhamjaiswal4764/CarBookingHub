@@ -8,10 +8,7 @@ img.carImage{
     font-weight: bold;
     text-transform: uppercase;
 }
-.content{
-    display: flex;
-    flex-wrap: wrap;
-}
+
 .imageContainer{
     padding: 8px;
     background-color: #ffff ;
