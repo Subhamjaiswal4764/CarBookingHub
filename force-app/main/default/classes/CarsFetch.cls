@@ -44,7 +44,10 @@ public with sharing class CarsFetch {
 
 // debug code 
 
-
+System.debug(filters);
+        System.debug(maxPrice);
+        System.debug(carC);
+        System.debug(carM);
       
        
         
