@@ -13,8 +13,8 @@ const CAR_MAKE_ERROR='error loading car make type';
 const CAR_CATEGORY_ERROR='error loading car category type';
 export default class CarFilter extends LightningElement {
      
-    
-    timer
+    carM
+    carC
     
     car_make_error_msg=CAR_MAKE_ERROR
     car_category_error_msg=CAR_CATEGORY_ERROR
@@ -52,62 +52,34 @@ export default class CarFilter extends LightningElement {
         console.log(this.filters);
         this.sendDataToCarTileList();
     }
-    // handleCarMakeRadio(event)
-    // {
-    //     // if(!this.filters.carC){
-    //     //     console.log("in the first if")
-    //     //     const carC=this.carC.data.values.map(item=>item.value)
-    //     //     const carM=this.carM.data.values.map(item=>item.value)
-    //     //     this.filters={...this.filters, carC, carM}
-    //     //     // this.filters={...this.filters,carM:carM}
-    //     // }
-    //     console.log('when itis not tehir carc');
-    //     console.log(this.filters)
-    //     const{name,value}=event.target.dataset;
-    //     console.log("name"+name);
-    //     console.log("value"+value);
-    //   if(event.target.checked){
-    //     console.log("i am checked");
-    //     if(!this.filter[name].includes(value)){
-    //     this.filters[name] = [...this.filters[name], value]
-    //     console.log('if');
-    //     console.log(this.filters)
-    //   }
-    // }
-    //   else{
-    //     this.filters[name]= this.filters[name].filter(item=>item !== value)
-    //     console.log('else');
-    //     console.log(this.filters)
-    //   }
-    //     this.sendDataToCarTileList();
-    // }
-    handleCarMakeRadio(event){
-        if(!this.filters.carC){
-            const carC = this.carC.data.values.map(item=>item.value)
-            const carM = this.carM.data.values.map(item=>item.value)
-            this.filters = {...this.filters, carC, carM}
-        }
+    handleCarMakeRadio(event)
+    {
+        // const{name,value}=event.target.dataset;
+        // console.log("name"+name);
+        // console.log("value"+value);
+      
         const {name, value} = event.target.dataset
-        // console.log("name", name)
-        // console.log("value", value)
-        if(event.target.checked){
-            if(!this.filters[name].includes(value)){
-                this.filters[name] = [...this.filters[name], value]
-            }
-        } else {
-            this.filters[name] =  this.filters[name].filter(item=>item !==value)
-        }
-        this.sendDataToCarList()
+        if(!this.filters.carC){
+                    const carC = this.carC.data.values.map(item=>item.value)
+                    const carM = this.carM.data.values.map(item=>item.value)
+                    this.filters = {...this.filters, carC, carM}
+                }
+               
+                // console.log("name", name)
+                // console.log("value", value)
+                if(event.target.checked){
+                    if(!this.filters[name].includes(value)){
+                        this.filters[name] = [...this.filters[name], value]
+                    }
+                } else {
+                    this.filters[name] =  this.filters[name].filter(item=>item !==value)
+                }
+                this.sendDataToCarList()
+        
     }
-
     sendDataToCarTileList(){
-        window.clearTimeOut(this.timer);
-        this.timer=window.setTimeout(() => {
-            publish(this.messageContextProperty, CARS_FILTERED_MSG_CHANNEL, {
-                filteredData: this.filters
-            })  
-        }, 400);
-       
+        publish(this.messageContextProperty, CARS_FILTERED_MSG_CHANNEL, {
+            filteredData: this.filters
+        })
     }
- 
 }

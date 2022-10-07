@@ -13,7 +13,7 @@
                         key={make.value}
                         type="checkbox" 
                         checked
-                        data-name={make.label}
+                        data-name="carM"
                         data-value={make.value}
                         label={make.label}
                         onchange={handleCarMakeRadio}
@@ -21,8 +21,7 @@
                     </template>
                 </template>
                 <template if:true={carM.error}>
-                    <div>{car_make_error_msg}
-                   </div>
+                    <div>{car_make_error_msg}</div>
                 </template>
             </section>
             <section>
@@ -33,7 +32,7 @@
                         key={category.value}
                         type="checkbox" 
                         checked
-                        data-name={category.label}
+                        data-name="carC"
                         data-value={category.value}
                         label={category.label}
                         onchange={handleCarMakeRadio}
@@ -44,7 +43,7 @@
                     <div>{car_category_error_msg}</div>
                 </template>
             </section>
-         
+         123
         </div>
     </lightning-card>
 </template>
