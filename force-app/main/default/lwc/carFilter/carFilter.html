@@ -12,12 +12,16 @@
                         <lightning-input 
                         key={make.value}
                         type="checkbox" 
-                        data-name={make.label}
+                        checked
+                        data-name="carM"
                         data-value={make.value}
                         label={make.label}
                         onchange={handleCarMakeRadio}
-                        checked></lightning-input>
+                        ></lightning-input>
                     </template>
+                </template>
+                <template if:true={carM.error}>
+                    <div>{car_make_error_msg}</div>
                 </template>
             </section>
             <section>
@@ -27,15 +31,19 @@
                         <lightning-input 
                         key={category.value}
                         type="checkbox" 
-                        data-name={category.label}
+                        checked
+                        data-name="carC"
                         data-value={category.value}
                         label={category.label}
                         onchange={handleCarMakeRadio}
-                        checked></lightning-input>
+                        ></lightning-input>
                     </template>
                 </template>
+                <template if:true={carC.error}>
+                    <div>{car_category_error_msg}</div>
+                </template>
             </section>
-         xxxxxxxxxx
+         123
         </div>
     </lightning-card>
 </template>
