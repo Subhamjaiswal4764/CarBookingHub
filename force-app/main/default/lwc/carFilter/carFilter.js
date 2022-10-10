@@ -1,4 +1,4 @@
-import { LightningElement, wire, api} from 'lwc';
+import { LightningElement, wire, api, track} from 'lwc';
 import {getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 //importing LMS 
 import {publish , MessageContext } from 'lightning/messageService';
@@ -13,11 +13,12 @@ const CAR_MAKE_ERROR='error loading car make type';
 const CAR_CATEGORY_ERROR='error loading car category type';
 export default class CarFilter extends LightningElement {
      
-    carM
-    carC
+    // carM
+    // carC
     
     car_make_error_msg=CAR_MAKE_ERROR
     car_category_error_msg=CAR_CATEGORY_ERROR
+    
     filters={
         searchKey:'',
         maxPrice:99999999
@@ -44,8 +45,7 @@ export default class CarFilter extends LightningElement {
         console.log(this.filters);
         this.sendDataToCarTileList();
     }
-
-    sliderChange(event){
+ sliderChange(event){
        
         console.log(" in the price finding slider ")
         this.filters={...this.filters,'maxPrice':event.target.value}
@@ -67,19 +67,24 @@ export default class CarFilter extends LightningElement {
                
                 // console.log("name", name)
                 // console.log("value", value)
-                if(event.target.checked){
-                    if(!this.filters[name].includes(value)){
-                        this.filters[name] = [...this.filters[name], value]
+            
+                    if(event.target.checked){
+                        if(!(this.filters[name].includes(value))){
+                            this.filters[name] = [...this.filters[name], value]
+                        }
+                    } 
+                     else  {
+                        this.filters[name] =  this.filters[name].filter(item=>item !==value);
                     }
-                } else {
-                    this.filters[name] =  this.filters[name].filter(item=>item !==value)
-                }
-                this.sendDataToCarList()
+                  
+                this.sendDataToCarTileList();
+             }
         
-    }
-    sendDataToCarTileList(){
-        publish(this.messageContextProperty, CARS_FILTERED_MSG_CHANNEL, {
-            filteredData: this.filters
-        })
-    }
+
+        sendDataToCarTileList(){
+            publish(this.messageContextProperty, CARS_FILTERED_MSG_CHANNEL, {
+                filteredData: this.filters
+            });
+        }
+   
 }
